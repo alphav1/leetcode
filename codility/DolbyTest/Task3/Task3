@@ -1,0 +1,66 @@
+<template>
+    <div>
+        <div 
+            data-testid="text" 
+            @click="toggleUnformatted"
+        >
+            {{ formattedText }}
+        </div>
+        <div 
+            data-testid="value" 
+            @click="toggleUnformatted"
+        >
+            {{ formattedValue }}
+        </div>
+        <div v-if="showUnFormatted && config.showUnFormatted === true">
+            {{ text }}: {{ value }}
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: "formatter",
+    props: ["text", "value", "config"],
+    data() {
+        return {
+            showUnFormatted: false
+        };
+    },
+    computed: {
+        formattedText() {
+            const maxLength = this.config?.maxTextLength || 5;
+            if (this.text.length > maxLength) {
+                return this.text.substring(0, maxLength) + '...';
+            }
+            return this.text;
+        },
+        formattedValue() {
+            const val = this.value;
+            
+            if (val >= 1000000) {
+                if (val === 1000000) {
+                    return '1M';
+                }
+                const millions = val / 1000000;
+                return millions.toFixed(1) + 'M';
+            } else if (val >= 1000) {
+                if (val === 1000) {
+                    return '1K';
+                }
+                const thousands = val / 1000;
+                return thousands.toFixed(1) + 'K';
+            } else {
+                return Math.round(val).toString();
+            }
+        }
+    },
+    methods: {
+        toggleUnformatted() {
+            if (this.config.showUnFormatted === true) {
+                this.showUnFormatted = !this.showUnFormatted;
+            }
+        }
+    }
+};
+</script>

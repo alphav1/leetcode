@@ -25,6 +25,6 @@ function solution2(A) {
     return xorAll ^ xorArray;
 }
 
-A = []
+A = [1, 3, 6, 4, 1, 2]
 console.log(solution(A))
 console.log(solution2(A))
