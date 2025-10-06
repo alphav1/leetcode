@@ -1,0 +1,51 @@
+Cryptocurrencies Exchange Platform
+
+Your task is to find all the bugs and provide a correct implementation in the React Project for a Cryptocurrencies Exchange Platform.
+
+Requirements
+1. The correctness of the implementation is based on the Unit Tests: initially, all the tests are failing and you should fix the bugs and provide the missing implementation so as to allow the tests to pass.
+2. Read the Unit Tests' titles and error messages to understand the expected behavior. The list of Unit Tests' titles is available in the last section of the description: Unit Tests.
+3. Keep in mind that you are required to make changes in multiple files in order to score 100%.
+4. The solution consists of seven files:
+
+app.js: the wrapper and entry point to the solution source code;
+context.js: declaration of React Context for some of the state used in the app (orders feature);
+cryptoBuy.js: the component responsible for managing both the table with cryptos and the basket;
+cryptoTable.js: the component responsible for displaying the table with cryptos;
+cryptoDetails.js: the component responsible for displaying the given crypto details;
+cryptoBasket.js: the component responsible for managing the basket;
+orders.js: the component responsible for displaying placed orders.
+
+Assumptions
+1. You should focus only on implementing the requirements to fix all the Unit Tests.
+2. Do not change the way the components and variables are exported from and imported into each file.
+3. Do not change the data-testid attributes in the solution source code.
+4. The context.js file is the only file that does not require any changes in order to score 100%.
+
+Hints
+1. Use the Preview Tab to visually check the correctness of your code.
+2. Use the browser's developer tools in the Preview Tab to debug your code.
+
+Available packages/libraries
+The only available packages/libraries are:
+React version 17.8.20
+axios version 8.22.00
+@mui/material version 5.2.4
+@mui/icons-material version 5.2.4
+
+Unit Tests:
+1. crypto table : correctly handles page change (table pagination).
+2. crypto table : details button should have margin left set to 20px. v
+3. crypto table : name cells for coins with price less than 100 should have color set to green x
+4. crypto table : correctly opens the details dialog by passing the expected currency property. v
+5. crypto table : calls the /close_event GET request when the dialog is closed.
+6. crypto table : displays a div with a Try again message when close_event endpoint fails.
+7. crypto details : displays the description.
+8. crypto details : reopening other currency's details shows correct description.
+9. crypto basket : when the coin is already in the basket, clicking the buy button does not update quantity.
+10. crypto basket : should remove coin from basket when the quantity equals 0.
+11. crypto basket : should correctly calculate the average price per single coin (coin_1_price+coin_2_price+...+coin_n_price/n).
+12. crypto basket : should correctly calculate the sum.
+13. crypto basket : order comment field should be focused when user clicks the order button and there is an empty basket or no order comment value.
+14. crypto basket : calls the context's addOrder with basket and comment value when comment and basket are not empty.
+15. orders : should display orders coming from the context.

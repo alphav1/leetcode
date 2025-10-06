@@ -1,0 +1,32 @@
+Implement a Vue component that formats the input according to config passed as properties and rules specified in the description.
+
+1. The Formatter component should accept three properties:
+text (string): text to be displayed according to the formatting rules;
+value (number): numerical value to be displayed according to the formatting rules;
+config (object) consisting of two properties:
+1. maxTextLength (optional number);
+2. showinFormatted (optional boolean).
+
+2. Formatter should use three separate elements:
+1. A separate element with data-testid property set to text for formatted text:
+2. A separate element with data-testid property set to value for formatted value 0:
+3. A separate element to display the unformatted text when someone clicks on the text or value elements mentioned After a subsequent click on text or value, the unformatted text should be removed.
+
+3. The value passed as an input property will be greater than 0 and less than 10000000 (0 < value < 10000000). The value should be formatted according to the following set of rules:
+If a value is greater than one million it should add the rounded with one-digit precision suffix and display the number of million. (4500000.21 4.5M):
+If a value is equal to one million it should display 1M (without a decimal point);
+If a value is greater than one thousand it should add the "K" suffix and display the number of thousands rounded with one-digit precision (25658.20 25.7K 0);
+If a value is equal to one thousand it should display 1K (without a decimal point);
+Otherwise the value should be rounded to the closest integer value (657.1230 6570)
+
+4. The text should be formatted according to the property in the config:
+maxTextLength (optional number, 5 by default): Maximum number of characters to be displayed (relates only the text property). If text is longer than maxTextLength, display the first maxTextLength characters and add three dots (...).
+
+5. The unformatted text should never be displayed if the showUnFormatted property from the config object does not equal true, otherwise it should be displayed when someone clicks on text or value.
+The unformatted text should be displayed in a separate element in the following form: (text): (value)
+
+Hints
+Do not change the way the main component is exported (default export).
+The 'Preview" tab will display your component. You can use it for testing purposes.
+Design/styling is not assessed and will not affect the score. You should focus only on implementing the requirements. You can use console, log and console.error for debugging purposes via your browser's developer tools.
+Available packages/libraries: vue (x2.7.7)

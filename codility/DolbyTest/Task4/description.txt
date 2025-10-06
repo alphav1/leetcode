@@ -1,0 +1,41 @@
+GYM MEMBERSHIP CARD PROBLEM
+
+PROBLEM DESCRIPTION:
+A gym membership card allows entry for a one-week period that always begins on a Monday and ends on the following Sunday.
+Ellis attends the gym once a day at most. You are given a list visits of length N, which represents the days Ellis visits the gym, in chronological order.
+What is the minimum number of gym membership cards that Ellis has to purchase?
+
+FUNCTION SIGNATURE:
+int solution(vector<string> &visits);
+
+PARAMETERS:
+- visits: A list of length N representing the days Ellis visits the gym, in chronological order
+- Days of the week are represented as three-letter strings: "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
+
+RETURN VALUE:
+The minimum number of gym membership cards that Ellis must purchase based on the order of visits specified.
+
+EXAMPLES:
+
+1. visits = ["Tue", "Sat", "Mon", "Fri"]
+   Expected return: 2
+   Explanation: In the first week, Ellis visits the gym on Tuesday and Saturday. 
+                In the second week, Ellis visits the gym on Monday and Friday.
+
+2. visits = ["Mon", "Mon", "Mon"]
+   Expected return: 3
+   Explanation: Ellis visits the gym only on Monday each week.
+
+3. visits = ["Sun", "Sat", "Fri", "Thu", "Wed", "Tue", "Mon"]
+   Expected return: 7
+   Explanation: Each visit requires a new membership card as they span multiple weeks.
+
+CONSTRAINTS:
+- N is an integer within the range [1..100]
+- The only strings in visits are: "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
+- Focus on correctness. Performance is not the focus of the assessment.
+
+KEY INSIGHTS:
+- A membership card covers Monday to Sunday (7 consecutive days)
+- Visits are given in chronological order
+- Need to determine when a new card is required based on the sequence of days

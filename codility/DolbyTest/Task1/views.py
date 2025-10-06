@@ -7,22 +7,17 @@ from .models import Bug, Project, User
 
 
 def bugs(request):
-    # Only allow GET method
     if request.method != 'GET':
         return HttpResponseNotAllowed(['GET'])
 
-    # Get query parameters
     project_id = request.GET.get('project_id')
     user_id = request.GET.get('user_id')
 
-    # At least one parameter is required
     if not project_id and not user_id:
         return HttpResponseNotFound()
 
-    # Start with all bugs
     bug_queryset = Bug.objects.all()
 
-    # Filter by project if provided
     if project_id:
         try:
             project = Project.objects.get(id=project_id)
@@ -30,7 +25,6 @@ def bugs(request):
         except Project.DoesNotExist:
             return HttpResponseNotFound()
 
-    # Filter by user if provided
     if user_id:
         try:
             user = User.objects.get(id=user_id)
